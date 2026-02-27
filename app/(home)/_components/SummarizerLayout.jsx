@@ -1,5 +1,12 @@
+import SummarizerSideBar from "./SummarizerSideBar";
+
 export default function SummarizerLayout({ children }) {
   return (
-    <div>{children}</div>
+    <>
+      <SummarizerSideBar />
+      <main>
+        {children}
+      </main>
+    </>
   )
 }
