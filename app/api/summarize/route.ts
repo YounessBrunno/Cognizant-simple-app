@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { hf } from "@/config/inference.huggingface";
+import { hf } from "@/features/summarizer/summarizer.config";
 
 export async function POST(req : NextRequest) {
   try {
