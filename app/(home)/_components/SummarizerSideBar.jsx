@@ -1,9 +1,13 @@
+import Image from "next/image"
+import logo from "@/public/assets/logos/CognizantLogo.svg"
+import HistoryPanel from "@/features/summarizer/components/HistoryPanel"
 
 
 function SummarizerSideBar() {
   return (
-    <aside className="fixed top-0 left-0 flex flex-col items-center justify-between gap-2 w-40 py-2 pb-3 h-screen border-r border-gray-200">
-      
+    <aside className="fixed top-0 left-0 flex flex-col items-center justify-between gap-2 w-50 py-2 pb-3 h-screen border-r">
+      <Image src={logo} alt="Logo" width={170} height={170} />
+      <HistoryPanel />
     </aside>
   )
 }
