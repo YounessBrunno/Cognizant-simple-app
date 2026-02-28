@@ -1,4 +1,5 @@
 import SummarizerForm from "@/features/summarizer/components/SummarizerForm";
+
 export default function Home() {
   return (
     <>

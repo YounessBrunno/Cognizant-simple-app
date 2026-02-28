@@ -1,5 +1,5 @@
 import Image from "next/image"
-import logo from "@/public/assets/logos/CognizantLogo.svg"
+import logo from "public/assets/logos/CognizantLogo.svg"
 import HistoryPanel from "@/features/summarizer/components/HistoryPanel"
 
 
