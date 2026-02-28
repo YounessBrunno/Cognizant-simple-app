@@ -32,7 +32,7 @@ export default function SummarizerForm() {
           />
           <button 
             onClick={handleSummarize}
-            className="absolute bottom-1 right-1 px-3 py-1.5 bg-black border-2 border-gray-300 text-white font-bold rounded-full hover:bg-gray-800 transition-colors">
+            className="absolute bottom-1 right-1 px-3 py-2 bg-black border-2 border-gray-300 text-white font-bold rounded-full hover:bg-gray-800 transition-colors">
             <CornerDownLeftIcon className="w-5 h-5" />
           </button>
         </div>
