@@ -4,7 +4,7 @@ export default function SummarizerLayout({ children }) {
   return (
     <>
       <SummarizerSideBar />
-      <main>
+      <main className="min-h-screen flex flex-col items-center justify-center gap-4 p-4">
         {children}
       </main>
     </>
