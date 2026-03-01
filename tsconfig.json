@@ -34,7 +34,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/api/summarize/route.js"  ],
   "exclude": [
     "node_modules"
   ]
