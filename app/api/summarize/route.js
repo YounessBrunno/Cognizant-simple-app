@@ -55,14 +55,18 @@ export async function POST(req) {
   }
   
   try {
+    
     const summary = await hf.summarization({
       model: model,
       inputs: text.trim(),
     });
 
-    const summaryText = Array.isArray(summary) && summary.length > 0 &&
-      typeof summary[0].summary_text === "string" 
-      ? summary[0].summary_text : null;
+    const summaryText = typeof summary === "string" 
+     ? summary 
+     : Array.isArray(summary) && summary.length > 0 && summary[0].summary_text
+     ? summary[0].summary_text
+     : summary.summary_text || null;
+
 
     if (!summaryText) {
 

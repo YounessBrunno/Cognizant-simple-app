@@ -1,17 +1,40 @@
 "use client";
 
 import { useState } from 'react';
-import { CornerDownLeftIcon} from 'lucide-react';
+import { CornerDownLeftIcon, Loader2Icon} from 'lucide-react';
 
 export default function SummarizerForm() {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
+  const [summary, setSummary] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSummarize = () => {
-    if (input.trim()) {
-      console.log('Summarizing:', input);
-      // Add your summarize logic here
-    }
-  };
+  const handleSummarize = async () => {
+  if (!input.trim()) return;
+
+  setLoading(true);
+  setError(null);
+  setSummary(null);
+
+  try {
+    const res = await fetch(`/api/summarize?model=facebook/bart-large-cnn`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: input }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data?.error?.message || "Something went wrong");
+    
+    setSummary(data.summary);
+
+  } catch (err) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -26,16 +49,30 @@ export default function SummarizerForm() {
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyPress}
             placeholder="Enter text to summarize..."
             className="flex-1 px-6 py-4 rounded-3xl bg-white text-black placeholder-gray-400 outline-none resize-none max-h-32"
             rows="3"
           />
           <button 
             onClick={handleSummarize}
-            className="absolute bottom-1 right-1 px-3 py-2 bg-black border-2 border-gray-300 text-white font-bold rounded-full hover:bg-gray-800 transition-colors">
-            <CornerDownLeftIcon className="w-5 h-5" />
+            disabled={loading || !input.trim()}
+            className="absolute bottom-1 right-1 px-3 py-2 bg-black border-2 border-gray-300 text-white font-bold rounded-full hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+            {loading ? <Loader2Icon className="w-5 h-5 animate-spin" /> : <CornerDownLeftIcon className="w-5 h-5" />}
           </button>
         </div>
+        {/* Display summary or error, can be added later as a separate component if needed. */}
+        {summary && (
+          <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+            <h3 className="font-bold text-lg mb-2">Summary:</h3>
+            <p className="text-gray-700">{summary}</p>
+          </div>
+        )}
+        {error && (
+          <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+            Error: {error}
+          </div>
+        )}
       </div>
   );
 }
