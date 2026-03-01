@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import { CornerDownLeftIcon, Loader2Icon} from 'lucide-react';
 import SummaryResult from './SummaryResult';
+import { useSummarizerHistory } from '../hooks/useSummarizerHistory';
 
 export default function SummarizerForm() {
   const [input, setInput] = useState("");
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { addToHistory } = useSummarizerHistory();
 
   const handleSummarize = async () => {
   if (!input.trim()) return;
@@ -29,6 +31,7 @@ export default function SummarizerForm() {
     if (!res.ok) throw new Error(data?.error?.message || "Something went wrong");
     
     setSummary(data.summary);
+    addToHistory(input, data.summary);
 
   } catch (err) {
     setError(err.message);
