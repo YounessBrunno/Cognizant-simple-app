@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { CornerDownLeftIcon, Loader2Icon} from 'lucide-react';
+import SummaryResult from './SummaryResult';
 
 export default function SummarizerForm() {
   const [input, setInput] = useState("");
@@ -61,18 +62,8 @@ export default function SummarizerForm() {
             {loading ? <Loader2Icon className="w-5 h-5 animate-spin" /> : <CornerDownLeftIcon className="w-5 h-5" />}
           </button>
         </div>
-        {/* Display summary or error, can be added later as a separate component if needed. */}
-        {summary && (
-          <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-            <h3 className="font-bold text-lg mb-2">Summary:</h3>
-            <p className="text-gray-700">{summary}</p>
-          </div>
-        )}
-        {error && (
-          <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
-            Error: {error}
-          </div>
-        )}
+        
+        <SummaryResult summary={summary} error={error} />
       </div>
   );
 }
