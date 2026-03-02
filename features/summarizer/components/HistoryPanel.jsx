@@ -26,7 +26,7 @@ export default function HistoryPanel() {
           <p className="text-gray-500 text-sm">No history yet</p>
         ) : (
           history.map((item) => (
-            <div key={item.id} className="p-1 bg-gray-100 rounded text-sm w-full overflow-hidden flex justify-between items-start gap-1">
+            <div key={item.id} className="p-1 bg-gray-100 rounded text-sm w-full overflow-hidden flex justify-between items-center gap-1">
               <div className="flex-1 min-w-0">
                 <p className="font-semibold truncate">{item.text.substring(0, 50)}...</p>
                 <p className="text-gray-600 text-xs mt-1">{new Date(item.timestamp).toLocaleString()}</p>
@@ -66,7 +66,7 @@ export default function HistoryPanel() {
         <AlertDialogTrigger asChild>
           <Button
            disabled={history.length === 0}
-           className="w-full bg-black text-white py-2 px-9 rounded-md hover:bg-black/20 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto"
+           className="w-full bg-black text-white py-2 px-9 rounded-md hover:bg-black/80 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto"
            variant="destructive">
             Clear History
           </Button>

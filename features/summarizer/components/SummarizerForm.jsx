@@ -53,9 +53,10 @@ export default function SummarizerForm() {
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
+            
             onKeyDown={handleKeyPress}
             placeholder="Enter text to summarize..."
-            className="flex-1 px-6 py-4 rounded-3xl bg-white text-black placeholder-gray-400 outline-none resize-none max-h-32"
+            className="flex-1 px-6 py-4 rounded-3xl bg-white text-black placeholder-gray-400 outline-none resize-none  max-h-32"
             rows="3"
           />
           <button 
