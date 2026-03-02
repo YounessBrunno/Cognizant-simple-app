@@ -2,6 +2,18 @@
 
 import { Trash2Icon } from 'lucide-react';
 import { useSummarizerHistory } from '../hooks/useSummarizerHistory';
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction
+} from '@/shared/ui/alert-dialog';
+import { Button } from '@/shared/ui/button';
 
 export default function HistoryPanel() {
   const { history, clearHistory, removeFromHistory } = useSummarizerHistory();
@@ -19,21 +31,62 @@ export default function HistoryPanel() {
                 <p className="font-semibold truncate">{item.text.substring(0, 50)}...</p>
                 <p className="text-gray-600 text-xs mt-1">{new Date(item.timestamp).toLocaleString()}</p>
               </div>
-              <button 
-                onClick={() => removeFromHistory(item.id)}
-                className="text-red-500 hover:text-red-700 text-xs font-bold px-1 shrink-0">
-                <Trash2Icon size={16} />
-              </button>
+              
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="ghost" 
+                    className="text-red-500 hover:text-red-700 text-xs font-bold px-1 shrink-0">
+                    <Trash2Icon className="w-4 h-4" />
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      This action cannot be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => removeFromHistory(item.id)}>
+                      Continue
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
+              
             </div>
           ))
         )}
       </div>
-      <button 
-        onClick={clearHistory}
-        disabled={history.length === 0}
-        className="w-full bg-black text-white py-2 px-9 rounded-md hover:bg-black/20 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto">
-        Clear History
-      </button>
+      
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button
+           disabled={history.length === 0}
+           className="w-full bg-black text-white py-2 px-9 rounded-md hover:bg-black/20 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto"
+           variant="destructive">
+            Clear History
+          </Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={clearHistory}>
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
