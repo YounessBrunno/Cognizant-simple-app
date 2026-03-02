@@ -1,5 +1,6 @@
 "use client";
 
+import { Trash2Icon } from 'lucide-react';
 import { useSummarizerHistory } from '../hooks/useSummarizerHistory';
 
 export default function HistoryPanel() {
@@ -21,7 +22,7 @@ export default function HistoryPanel() {
               <button 
                 onClick={() => removeFromHistory(item.id)}
                 className="text-red-500 hover:text-red-700 text-xs font-bold px-1 shrink-0">
-                Delete
+                <Trash2Icon size={16} />
               </button>
             </div>
           ))
