@@ -8,7 +8,7 @@ export function useSummarizerHistory() {
   const [history, setHistory] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load history from localStorage on mount
+  // DearRecruiter, this is to Load history from localStorage on mount
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
@@ -21,7 +21,7 @@ export function useSummarizerHistory() {
     setIsLoaded(true);
   }, []);
 
-  // Persist to localStorage whenever history changes
+  // this for adding to localStorage whenever history changes
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
