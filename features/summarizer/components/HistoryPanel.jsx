@@ -3,19 +3,26 @@
 import { useSummarizerHistory } from '../hooks/useSummarizerHistory';
 
 export default function HistoryPanel() {
-  const { history, clearHistory } = useSummarizerHistory();
+  const { history, clearHistory, removeFromHistory } = useSummarizerHistory();
 
   return (
-    <div className="flex flex-col h-screen">
-      <h2 className="text-2xl font-bold mb-2">History</h2>
-      <div className="flex-1 overflow-y-auto mb-4 space-y-0">
+    <div className="flex flex-col w-full flex-1 px-3">
+      <h2 className="text-[17px] mb-2">History</h2>
+      <div className="flex-1 overflow-y-auto mb-4 space-y-1 w-full">
         {history.length === 0 ? (
           <p className="text-gray-500 text-sm">No history yet</p>
         ) : (
           history.map((item) => (
-            <div key={item.id} className="p-1 bg-gray-100 rounded text-sm">
-              <p className="font-semibold truncate">{item.text.substring(0, 50)}...</p>
-              <p className="text-gray-600 text-xs mt-1">{new Date(item.timestamp).toLocaleString()}</p>
+            <div key={item.id} className="p-1 bg-gray-100 rounded text-sm w-full overflow-hidden flex justify-between items-start gap-1">
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold truncate">{item.text.substring(0, 50)}...</p>
+                <p className="text-gray-600 text-xs mt-1">{new Date(item.timestamp).toLocaleString()}</p>
+              </div>
+              <button 
+                onClick={() => removeFromHistory(item.id)}
+                className="text-red-500 hover:text-red-700 text-xs font-bold px-1 shrink-0">
+                Delete
+              </button>
             </div>
           ))
         )}
