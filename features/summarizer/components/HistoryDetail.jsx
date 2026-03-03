@@ -59,26 +59,19 @@ export default function HistoryDetail({ id }) {
             <Button
               variant="ghost"
               size="sm"
-              className="px-2 py-1 text-xs font-medium text-gray-700 hover:text-black hover:bg-gray-100"
+              className="p-1 text-xs font-medium bg-gray-200 text-gray-700 hover:text-black hover:bg-gray-300"
             >
-              <ArrowLeftIcon className="w-4 h-4 mr-1" />
-              Back to summarizer
+              <ArrowLeftIcon className="w-5 h-5 mr-1" />
             </Button>
           </Link>
-
-          <div className="hidden sm:flex items-center gap-2 text-[11px] text-gray-500">
+        </div>
+        <div className="hidden sm:flex items-center gap-2 text-[11px] text-gray-600 p-1 px-2 rounded-full bg-gray-200 border border-gray-200">
             <ClockIcon className="w-3.5 h-3.5" />
             <span>{formattedDate}</span>
-          </div>
-        </div>
-
-        <div className="inline-flex items-center rounded-full bg-gray-900 text-white px-3 py-1 text-[11px] font-medium">
-          Summary #{id}
         </div>
       </div>
 
-      {/* Dear Recruiter, this is the Content layout, as i said in the future they can be separated into different components*/}
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="space-y-6">
         <section className="space-y-3">
           <h2 className="text-sm font-semibold tracking-wide text-gray-700 uppercase">
             Original text
