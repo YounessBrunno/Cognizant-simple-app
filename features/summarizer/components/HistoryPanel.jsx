@@ -82,7 +82,7 @@ export default function HistoryPanel() {
         <AlertDialogTrigger asChild>
           <Button
             disabled={history.length === 0}
-            className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black/80 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto text-xs font-semibold"
+            className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black/80 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto font-semibold"
             variant="destructive"
           >
             Clear history
