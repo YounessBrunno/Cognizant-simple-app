@@ -20,7 +20,7 @@ export default function HistoryPanel() {
   const { history, clearHistory, removeFromHistory } = useSummarizerHistory();
 
   return (
-    <div className="flex flex-col w-full flex-1 px-3">
+    <div className="flex flex-col w-full h-full px-3">
       <h2 className="text-sm font-semibold tracking-wide text-gray-700 mb-2">
         History
       </h2>
