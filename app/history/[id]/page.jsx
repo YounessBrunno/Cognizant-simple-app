@@ -1,7 +1,7 @@
+import HistoryDetail from "@/features/summarizer/components/HistoryDetail";
 
+export default async function HistoryDetailPage({ params }) {
+  const { id } = await params;
 
-export default function page() {
-  return (
-    <div>page</div>
-  )
+  return <HistoryDetail id={id} />;
 }

@@ -48,6 +48,7 @@ export function useSummarizerHistory() {
 
   return {
     history,
+    isLoaded,
     addToHistory,
     clearHistory,
     removeFromHistory,
