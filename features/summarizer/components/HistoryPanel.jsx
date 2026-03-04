@@ -80,32 +80,34 @@ export default function HistoryPanel() {
         </div>
       </div>
 
-      <AlertDialog>
-        <AlertDialogTrigger asChild>
-          <Button
-            disabled={history.length === 0}
-            className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black/80 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto font-semibold"
-            variant="destructive"
-          >
-            Clear history
-          </Button>
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Clear all history?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This will remove all saved summaries. This action cannot be undone.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
+      <div className="pr-3">
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button
+              disabled={history.length === 0}
+              className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black/80 disabled:opacity-50 disabled:cursor-not-allowed transition mt-auto font-semibold"
+              variant="destructive"
+            >
+              Clear history
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Clear all history?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This will remove all saved summaries. This action cannot be undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
 
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={clearHistory}>
-              Continue
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction onClick={clearHistory}>
+                Continue
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
     </div>
   );
 }
