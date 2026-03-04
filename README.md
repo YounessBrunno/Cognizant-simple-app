@@ -446,27 +446,3 @@ yarn dev
 You should see the summarizer form with the history sidebar. Summaries will be generated via the configured Hugging Face model and persisted in localStorage.
 
 ---
-
-## Why This Project Reflects Production-Ready Thinking
-
-Even though the scope is intentionally small, the codebase showcases:
-
-- **Clear separation of concerns**:
-  - Features vs routing vs shared UI.
-  - Business logic in hooks/config, not buried in components.
-- **Defensive API design**:
-  - Input validation and semantic checks.
-  - Normalized responses and explicit error codes.
-  - Proper HTTP status usage (`400`, `502`, `200`).
-- **Security-aware integration**:
-  - HF token kept strictly on the server side.
-  - Client never touches third-party credentials.
-- **Thoughtful UX**:
-  - Loading and error states are handled explicitly.
-  - Keyboard shortcuts match user expectations.
-  - Destructive actions are gated behind confirmation dialogs.
-- **Scalability path**:
-  - Feature-based architecture will tolerate new features and cross-cutting concerns.
-  - History logic and summarization client are structured so they can be swapped or extended without rewriting the UI.
-
-Altogether, this repository is less about raw feature count and more about **how** features are implemented: with clean boundaries, explicit trade-offs, and an eye toward maintainability and growth.
