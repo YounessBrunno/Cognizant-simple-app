@@ -20,11 +20,12 @@ export default function HistoryPanel() {
   const { history, clearHistory, removeFromHistory } = useSummarizerHistory();
 
   return (
-    <div className="flex flex-col w-full h-full px-3">
-      <h2 className="text-sm font-semibold tracking-wide text-gray-700 mb-2">
+    <div className="flex flex-col w-full h-full pl-3">
+      <h2 className="text-sm font-semibold tracking-wide text-gray-700 mb-2 pr-3">
         History
       </h2>
-      <div className="flex-1 overflow-y-auto mb-4 space-y-1.5 w-full">
+      <div className="flex-1 overflow-y-auto mb-4 w-full">
+        <div className="pr-3 space-y-1.5">
         {history.length === 0 ? (
           <p className="text-gray-500 text-xs">No history yet</p>
         ) : (
@@ -45,7 +46,7 @@ export default function HistoryPanel() {
                   {new Date(item.timestamp).toLocaleString()}
                 </p>
               </Link>
-
+              {/* Dear Recruiter, this and the below  alert dialog,  we can in  the future turn it into a reusable component */}
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button
@@ -76,6 +77,7 @@ export default function HistoryPanel() {
             </div>
           ))
         )}
+        </div>
       </div>
 
       <AlertDialog>

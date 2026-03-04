@@ -29,8 +29,7 @@ export default function HistoryDetail({ id }) {
               size="sm"
               className="px-2 py-1 text-xs font-medium text-gray-700 hover:text-black hover:bg-gray-100"
             >
-              <ArrowLeftIcon className="w-4 h-4 mr-1" />
-              Back to summarizer
+              <ArrowLeftIcon className="w-5 h-5 mr-1" />
             </Button>
           </Link>
         </div>
@@ -73,7 +72,7 @@ export default function HistoryDetail({ id }) {
 
       <div className="space-y-6">
         <section className="space-y-3">
-          <h2 className="text-sm font-semibold tracking-wide text-gray-700 uppercase">
+          <h2 className="text-sm font-mono font-semibold tracking-wide text-gray-700">
             Original text
           </h2>
           <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
@@ -92,7 +91,7 @@ export default function HistoryDetail({ id }) {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-sm font-semibold tracking-wide text-gray-700 uppercase">
+          <h2 className="text-sm font-mono font-semibold tracking-wide text-gray-700">
             Summary
           </h2>
           <div className="rounded-2xl border border-gray-200 bg-gray-50 shadow-sm overflow-hidden h-full flex flex-col">

@@ -56,7 +56,7 @@ export default function SummarizerForm() {
             
             onKeyDown={handleKeyPress}
             placeholder="Enter text to summarize..."
-            className="flex-1 px-6 py-4 rounded-3xl bg-white text-black placeholder-gray-400 outline-none resize-none  max-h-32"
+            className="flex-1 px-6 py-4 rounded-3xl bg-white text-black placeholder-gray-400 outline-none resize-none  max-h-32 overflow-y-auto no-scrollbar"
             rows="3"
           />
           <button 
